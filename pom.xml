@@ -19,5 +19,6 @@
 
   <modules>
     <module>backoffice</module>
+    <module>java-library</module>
   </modules>
 </project>
