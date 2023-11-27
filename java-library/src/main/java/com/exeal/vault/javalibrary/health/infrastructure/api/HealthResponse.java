@@ -1,4 +1,4 @@
-package com.exeal.vault.backoffice.health.infrastructure.api;
+package com.exeal.vault.javalibrary.health.infrastructure.api;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;

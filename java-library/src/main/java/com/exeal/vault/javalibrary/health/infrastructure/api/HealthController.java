@@ -1,4 +1,4 @@
-package com.exeal.vault.backoffice.health.infrastructure.api;
+package com.exeal.vault.javalibrary.health.infrastructure.api;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.exeal.vault.backoffice.health;
+package com.exeal.vault.javalibrary;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
