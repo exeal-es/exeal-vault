@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  exeal-vault-backoffice:
+    image: exeal-vault-backoffice
+    build:
+      context: .
+      dockerfile: Dockerfile-backoffice
+    container_name: exeal-vault-backoffice
+    restart: always
+    ports:
+      - "${BACKOFFICE_PORT}:${BACKOFFICE_PORT}"
+    environment:
+      PORT: "${BACKOFFICE_PORT}"
+
+  exeal-vault-java-library:
+    image: exeal-vault-java-library
+    build:
+      context: .
+      dockerfile: Dockerfile-java-library
+    container_name: exeal-vault-java-library
+    restart: always
+    ports:
+      - "${JAVA_LIBRARY_PORT}:${JAVA_LIBRARY_PORT}"
+    environment:
+      PORT: "${JAVA_LIBRARY_PORT}"

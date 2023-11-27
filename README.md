@@ -1,4 +1,5 @@
 # exeal-vault
+
 Secure, store, and tightly control access to your applications' secrets.
 
 ## Backoffice
@@ -37,3 +38,29 @@ java-library/target/vault-java-library.jar
 ```
 
 Note: Set the environment variable PORT to the port you want to use.
+
+## Run locally with docker-compose
+
+```bash
+docker compose --env-file .env.dev up
+```
+
+Test the backoffice on http://localhost:8080
+
+```bash
+curl http://localhost:8080/health
+```
+
+Test the java-library on http://localhost:8081
+
+```bash
+curl http://localhost:8081/health
+```
+
+## Build with docker-compose for any environment
+
+Create the `.env` file as described in `.env.dev`
+
+```bash
+docker compose build
+```

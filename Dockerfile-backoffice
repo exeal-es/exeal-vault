@@ -1,0 +1,14 @@
+FROM maven:3.9.5-amazoncorretto-21 AS builder
+WORKDIR /vault
+COPY pom.xml /vault
+COPY backoffice/pom.xml /vault/backoffice/pom.xml
+COPY java-library/pom.xml /vault/java-library/pom.xml
+RUN mvn -pl backoffice dependency:go-offline
+COPY backoffice/src /vault/backoffice/src
+RUN mvn -pl backoffice package
+
+FROM amazoncorretto:21-alpine
+WORKDIR /vault
+COPY --from=builder /vault/backoffice/target/*.jar vault-backoffice.jar
+EXPOSE $PORT
+CMD java -DPORT=$PORT -jar vault-backoffice.jar

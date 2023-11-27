@@ -1,0 +1,14 @@
+FROM maven:3.9.5-amazoncorretto-21 AS builder
+WORKDIR /vault
+COPY pom.xml /vault
+COPY backoffice/pom.xml /vault/backoffice/pom.xml
+COPY java-library/pom.xml /vault/java-library/pom.xml
+RUN mvn -pl java-library dependency:go-offline
+COPY java-library/src /vault/java-library/src
+RUN mvn -pl java-library package
+
+FROM amazoncorretto:21-alpine
+WORKDIR /vault
+COPY --from=builder /vault/java-library/target/*.jar vault-java-library.jar
+EXPOSE $PORT
+CMD java -DPORT=$PORT -jar vault-java-library.jar
