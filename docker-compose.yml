@@ -12,6 +12,9 @@ services:
       - "${BACKOFFICE_PORT}:${BACKOFFICE_PORT}"
     environment:
       PORT: "${BACKOFFICE_PORT}"
+    networks:
+      - backoffice-and-frontend-network
+      - backoffice-and-java-library-network
 
   exeal-vault-java-library:
     image: exeal-vault-java-library
@@ -24,3 +27,25 @@ services:
       - "${JAVA_LIBRARY_PORT}:${JAVA_LIBRARY_PORT}"
     environment:
       PORT: "${JAVA_LIBRARY_PORT}"
+    networks:
+      - backoffice-and-java-library-network
+
+  exeal-vault-frontend:
+    image: exeal-vault-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    container_name: exeal-vault-frontend
+    restart: always
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    environment:
+      PORT: "${FRONTEND_PORT}"
+    networks:
+      - backoffice-and-frontend-network
+
+networks:
+  backoffice-and-java-library-network:
+    driver: bridge
+  backoffice-and-frontend-network:
+    driver: bridge
