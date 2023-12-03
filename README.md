@@ -39,6 +39,20 @@ java-library/target/vault-java-library.jar
 
 Note: Set the environment variable PORT to the port you want to use.
 
+## Frontend
+
+### Run
+
+```bash
+cd frontend && npm install && npm start
+```
+
+### Build
+
+```bash
+cd frontend && npm install && npm run build
+```
+
 ## Run locally with docker-compose
 
 ```bash
