@@ -1,22 +1,19 @@
 package com.exeal.vault.backoffice.secrets;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
-public class Secret implements java.io.Serializable {
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class Secret {
   private final String key;
   private final String value;
 
-  public Secret(String key, String value) {
+  @JsonCreator
+  public Secret(@JsonProperty("key") String key, @JsonProperty("value") String value) {
     this.key = key;
     this.value = value;
-  }
-
-  public String getKey() {
-    return key;
-  }
-
-  public String getValue() {
-    return value;
   }
 
   @Override

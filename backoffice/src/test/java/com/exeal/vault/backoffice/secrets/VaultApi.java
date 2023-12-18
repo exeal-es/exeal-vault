@@ -1,4 +1,4 @@
-package com.exeal.vault.backoffice.health.infrastructure.api;
+package com.exeal.vault.backoffice.secrets;
 
 import java.util.List;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -17,8 +17,7 @@ public class VaultApi {
   public List<Secret> getAllSecrets() {
     final ResponseEntity<List<Secret>> response =
         httpClient.exchange(
-            "/secrets", HttpMethod.GET, null, new ParameterizedTypeReference<>() {
-            });
+            "/secrets", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
     return response.getBody();
   }
 }

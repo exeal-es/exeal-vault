@@ -1,9 +1,5 @@
-package com.exeal.vault.backoffice.health.infrastructure.api;
+package com.exeal.vault.backoffice.secrets;
 
-import java.util.List;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
-import org.testcontainers.utility.DockerImageName;
 import redis.clients.jedis.JedisPool;
 
 public class Redis {

@@ -1,13 +1,17 @@
-package com.exeal.vault.backoffice.health.infrastructure.api;
+package com.exeal.vault.backoffice.secrets;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Secret {
+  private final String key;
+  private final String value;
 
-  String key;
-  String value;
-
-  public Secret(String key, String value) {
+  @JsonCreator
+  public Secret(@JsonProperty("key") String key, @JsonProperty("value") String value) {
     this.key = key;
     this.value = value;
   }
