@@ -1,15 +1,22 @@
-package com.exeal.vault.backoffice.health.infrastructure.api;
+package com.exeal.vault.backoffice.secrets;
 
 import java.util.Objects;
 
-public class Secret {
-
-  String key;
-  String value;
+public class Secret implements java.io.Serializable {
+  private final String key;
+  private final String value;
 
   public Secret(String key, String value) {
     this.key = key;
     this.value = value;
+  }
+
+  public String getKey() {
+    return key;
+  }
+
+  public String getValue() {
+    return value;
   }
 
   @Override

@@ -13,9 +13,9 @@ public class Redis {
     jedisPool = new JedisPool(host, port);
   }
 
-  public void addSecret(String apiSecret, String number) {
+  public void addSecret(String key, String value) {
     try (var jedis = jedisPool.getResource()) {
-      jedis.set(apiSecret, number);
+      jedis.hset("secrets", key, value);
     }
   }
 }
