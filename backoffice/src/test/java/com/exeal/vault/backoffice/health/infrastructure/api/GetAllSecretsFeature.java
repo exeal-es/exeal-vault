@@ -34,14 +34,10 @@ public class GetAllSecretsFeature {
 
   @Test
   public void getAllSecrets() {
-    // Given
-    // Dado que hay un secreto con la clave api_secret y el valor 123456
     redis.addSecret("api_secret", "123456");
-    // when
-    // Cuando se piden todos los secretos
+
     List<Secret> secrets = api.getAllSecrets();
-    // Then
-    // Se devuelve un secreto con la clave api_secret y el valor 123456
+
     Secret secret = new Secret("api_secret", "123456");
     Assertions.assertThat(secrets).contains(secret);
   }
