@@ -1,0 +1,23 @@
+{
+  "name": "exeal-vault",
+  "version": "1.0.0",
+  "description": "vault for password",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exeal-es/exeal-vault.git"
+  },
+  "author": "exeal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/exeal-es/exeal-vault/issues"
+  },
+  "homepage": "https://github.com/exeal-es/exeal-vault#readme",
+  "devDependencies": {
+    "cypress": "^13.6.1"
+  }
+}
