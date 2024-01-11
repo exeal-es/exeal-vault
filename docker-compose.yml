@@ -8,13 +8,18 @@ services:
       dockerfile: Dockerfile-backoffice
     container_name: exeal-vault-backoffice
     restart: always
+    depends_on:
+      - redis
     ports:
       - "${BACKOFFICE_PORT}:${BACKOFFICE_PORT}"
     environment:
       PORT: "${BACKOFFICE_PORT}"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
     networks:
       - backoffice-and-frontend-network
       - backoffice-and-java-library-network
+      - database-network
 
   exeal-vault-java-library:
     image: exeal-vault-java-library
@@ -44,8 +49,23 @@ services:
     networks:
       - backoffice-and-frontend-network
 
+  redis:
+    image: redis:5.0.3-alpine
+    platform: linux/amd64
+    container_name: backoffice-redis
+    restart: always
+    command: --port ${REDIS_PORT}
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    environment:
+      REDIS_PORT: "${REDIS_PORT}"
+    networks:
+      - database-network
+
 networks:
   backoffice-and-java-library-network:
     driver: bridge
   backoffice-and-frontend-network:
+    driver: bridge
+  database-network:
     driver: bridge

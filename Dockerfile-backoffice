@@ -11,4 +11,4 @@ FROM amazoncorretto:21-alpine
 WORKDIR /vault
 COPY --from=builder /vault/backoffice/target/*.jar vault-backoffice.jar
 EXPOSE $PORT
-CMD java -DPORT=$PORT -jar vault-backoffice.jar
+CMD java -DPORT=$PORT -DREDIS_HOST=$REDIS_HOST -DREDIS_PORT=$REDIS_PORT -jar vault-backoffice.jar
